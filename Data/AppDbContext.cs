@@ -20,7 +20,7 @@ namespace SmartCityPlanner.Data
             Add(new BuildingBlock
             {
                 Id = 1,
-                Polygon = new Polygon()
+                Polygon = new Polygon("[[3.5, 2.5], [1.5, 2.5], [1.5, 2.5]]")
             });
             Add(new BuildingBlock
             {
