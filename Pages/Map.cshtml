@@ -1,8 +1,13 @@
 @page
+@model MapModel
 @{
     ViewData["Title"] = "Map";
 }
 
+@foreach (var item in Model.BuildingBlocks)
+{
+    <p>@item.Polygon</p>
+}
 
 <div id="mapid">
     <script>
