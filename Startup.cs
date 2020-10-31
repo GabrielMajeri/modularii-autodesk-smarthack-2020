@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SmartCityPlanner.Data;
 
 namespace SmartCityPlanner
 {
@@ -19,13 +21,15 @@ namespace SmartCityPlanner
         {
             services.AddRazorPages();
             services.AddSingleton<ForgeService>();
+            services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=app.db"));
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDbContext context)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                context.Seed();
             }
             else
             {
