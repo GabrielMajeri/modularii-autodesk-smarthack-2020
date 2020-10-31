@@ -1,0 +1,29 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = " Map ";
+}
+
+
+<div id="mapid">
+    <script>
+        var mymap = L.map('mapid').setView([74.65154135276809, -76.94790791557863], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 256,
+        zoomOffset: -1,
+        }).addTo(mymap);
+
+        mymap.on('click', function (e) {
+        var coord = e.latlng;
+        var lat = coord.lat;
+        var lng = coord.lng;
+        console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+        });
+    </script>
+</div>
+
+@* Cluj: You clicked the map at latitude: 75.08980272811844 and longitude: -78.20472621891584 *@
+@* Jurilovca: You clicked the map at latitude: 74.714681752231 and longitude: -75.56622261083649*@
