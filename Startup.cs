@@ -18,6 +18,7 @@ namespace SmartCityPlanner
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddSingleton<ForgeService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
