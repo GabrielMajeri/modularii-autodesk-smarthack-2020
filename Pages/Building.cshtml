@@ -1,0 +1,18 @@
+@page
+@inject ForgeService ForgeService
+@{
+    ViewData["Title"] = "Clădire";
+}
+
+<div class="position-relative">
+    <div id="building-viewer-container"></div>
+</div>
+
+<script src="~/js/viewer.js"></script>
+<script>
+    const accessToken = "@ForgeService.PublicToken";
+    const element = document.getElementById("building-viewer-container");
+    const urn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6c29xbmJqaGFvN2h2bWZsc2F2Y2dpcWxvdmxyOHhjazZfdHV0b3JpYWxfYnVja2V0L3JzdF9iYXNpY19zYW1wbGVfcHJvamVjdC5ydnQ=";
+
+    createViewer(accessToken, element, urn);
+</script>
