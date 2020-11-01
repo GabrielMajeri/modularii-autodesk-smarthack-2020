@@ -4,7 +4,37 @@
     ViewData["Title"] = "Map";
 }
 
-
+<!-- Search form -->
+<section class = "float-right", style="padding-left: 10px;">
+    <form class="form-inline md-form mr-auto mb-4">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
+    </form>
+    <div class="btn-group btn-group-justified" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" onclick="fetchHeatMapData('Temperature')"> Heat Map
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Humidity Map
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option3" autocomplete="off" onclick="fetchNormalMap()" checked> Normal Map
+        </label>
+    </div>
+    <br>
+    <br>
+    <div class="btn-group btn-group-justified" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" onclick="fetchHeatMapData('Temperature')"> Polution Map
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Rainfall Map
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option3" autocomplete="off" onclick="fetchNormalMap()"> InCazDeOrice Map
+        </label>
+    </div>
+</section>
 <div id="mapid">
     <script>
 
@@ -68,7 +98,10 @@
             .then(data => heatmapLayer.setData({ max: 30, data }));
     }
 
-    fetchHeatMapData("Temperature");
+    function fetchNormalMap()
+    {
+        heatmapLayer.setData({max:0, data: []})
+    }
 
     mymap.on('dblclick', function(dblclk) {
         console.log(" ");
@@ -79,3 +112,4 @@
     @* Cluj: You clicked the map at latitude: 75.08980272811844 and longitude: -78.20472621891584 *@
     @* Jurilovca: You clicked the map at latitude: 74.714681752231 and longitude: -75.56622261083649*@
 </div>
+
