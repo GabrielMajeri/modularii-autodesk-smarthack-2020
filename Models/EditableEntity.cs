@@ -15,5 +15,11 @@ namespace SmartCityPlanner.Models
             // TODO(Condrat): implement
             return 0;
         }
+
+        public double ComputePerimeter()
+        {
+            // TODO(Condrat): implement
+            return 0;
+        }
     }
 }
