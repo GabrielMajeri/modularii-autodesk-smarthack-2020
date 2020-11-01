@@ -12,7 +12,7 @@
     </form>
     <div class="btn-group btn-group-justified" data-toggle="buttons">
         <label class="btn btn-secondary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" onclick="fetchHeatMapData('Temperature')"> Heat Map
+            <input type="radio" name="options" id="option1" autocomplete="off" onclick="fetchHeatMapData('Temperatures')"> Heat Map
         </label>
         <label class="btn btn-secondary">
             <input type="radio" name="options" id="option2" autocomplete="off"> Humidity Map
@@ -25,7 +25,7 @@
     <br>
     <div class="btn-group btn-group-justified" data-toggle="buttons">
         <label class="btn btn-secondary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" onclick="fetchHeatMapData('Temperature')"> Polution Map
+            <input type="radio" name="options" id="option1" autocomplete="off" onclick="fetchHeatMapData('Temperatures')"> Polution Map
         </label>
         <label class="btn btn-secondary">
             <input type="radio" name="options" id="option2" autocomplete="off"> Rainfall Map
@@ -93,9 +93,9 @@
     var heatmapLayer = new HeatmapOverlay(cfg).addTo(mymap);
 
     function fetchHeatMapData(name) {
-        fetch(`/HeatMap/${name}`)
+        fetch(`/data/${name}.json`)
             .then(res => res.json())
-            .then(data => heatmapLayer.setData({ max: 30, data }));
+            .then(data => heatmapLayer.setData(data));
     }
 
     function fetchNormalMap()

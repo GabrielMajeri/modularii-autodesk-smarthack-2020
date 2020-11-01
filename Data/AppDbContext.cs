@@ -14,10 +14,6 @@ namespace SmartCityPlanner.Data
         public DbSet<GreenSpace> GreenSpaces { get; set; }
         public DbSet<ParkingLot> ParkingLots { get; set; }
 
-
-        public DbSet<TemperatureData> TemperatureData { get; set; }
-        public DbSet<TemperatureData> RainfallData { get; set; }
-
         public AppDbContext(DbContextOptions options) : base(options) { }
 
         public void Seed()
@@ -99,8 +95,6 @@ namespace SmartCityPlanner.Data
                 });
             }
 
-            LoadHeatMapData<TemperatureData>("SeedData/Temperatures.json");
-
             SaveChanges();
         }
 
@@ -109,16 +103,6 @@ namespace SmartCityPlanner.Data
             public int Id { get; set; }
             public string Name { get; set; }
             public double[][] Vertices { get; set; }
-        }
-
-        private void LoadHeatMapData<T>(string path) where T : HeatMapData
-        {
-            var json = File.ReadAllText(path);
-            var data = JsonSerializer.Deserialize<T[]>(json);
-            foreach (var item in data)
-            {
-                Add(item);
-            }
         }
     }
 }
