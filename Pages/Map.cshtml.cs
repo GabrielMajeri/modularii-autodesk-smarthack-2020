@@ -10,7 +10,7 @@ namespace SmartCityPlanner.Pages
     {
         private readonly AppDbContext _context;
 
-        public List<BuildingBlock> BuildingBlocks { get; private set; }
+        public ICollection<BuildingBlock> BuildingBlocks { get; private set; }
 
         public MapModel(AppDbContext context)
         {
@@ -19,7 +19,7 @@ namespace SmartCityPlanner.Pages
 
         public void OnGet()
         {
-            BuildingBlocks = _context.BuildingBlocks.ToList();
+            BuildingBlocks = _context.BuildingBlocks.ToArray();
         }
     }
 }

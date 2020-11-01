@@ -20,12 +20,18 @@ namespace SmartCityPlanner.Models
             RawVertices = vertices;
         }
 
-        [NotMapped]
-        public List<(double, double)> Vertices
+        public Polygon(double[][] vertices)
         {
-            get => JsonSerializer.Deserialize<List<List<double>>>(RawVertices)
+            var vertexStrings = vertices.Select(v => $"[{v[0]}, {v[1]}]");
+            RawVertices = $"[{string.Join(',', vertexStrings)}]";
+        }
+
+        [NotMapped]
+        public ICollection<(double, double)> Vertices
+        {
+            get => JsonSerializer.Deserialize<double[][]>(RawVertices)
                 .Select(x => (x[0], x[1]))
-                .ToList();
+                .ToArray();
         }
 
         [Required]
