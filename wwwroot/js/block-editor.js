@@ -35,7 +35,7 @@ function putBuilding(id) {
 }
 
 function updateBuildings() {
-  fetch("/BlockEditor/Buildings?blockId=1")
+  fetch(`/BlockEditor/Buildings?blockId=${blockId}`)
     .then((res) => res.json())
     .then((data) => {
       for (const r of tr.nodes()) {
@@ -51,7 +51,7 @@ function updateBuildings() {
             height: 100,
             fill: "gray",
             stroke: "black",
-            strokeWidth: 1,
+            strokeWidth: 3,
             draggable: true,
           });
           r.id = building.id;
@@ -60,6 +60,33 @@ function updateBuildings() {
           r.on("dragend", () => putBuilding(building.id));
           layer.add(r);
           buildings[building.id] = r;
+
+          fetch(`/BlockEditor/BuildingType?buildingId=${building.id}`)
+            .then((res) => res.json())
+            .then((buildingType) => {
+              switch (buildingType) {
+                case 0:
+                  r.stroke("red");
+                  r.fill("darkred");
+                  break;
+                case 1:
+                  r.stroke("lawngreen");
+                  r.fill("forestgreen");
+                  break;
+                case 2:
+                  r.fill("indigo");
+                  r.stroke("blue");
+                  break;
+                case 3:
+                  r.fill("peru");
+                  r.stroke("yellow");
+                  break;
+                default:
+                  r.fill("gray");
+                  r.stroke("black");
+                  break;
+              }
+            });
         }
         r = buildings[building.id];
         if (r.lock) {

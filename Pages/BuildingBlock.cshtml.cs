@@ -24,6 +24,7 @@ namespace SmartCityPlanner.Pages
             {
                 return BadRequest();
             }
+            BuildingBlock = block;
             return Page();
         }
     }

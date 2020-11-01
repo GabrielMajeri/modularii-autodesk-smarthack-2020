@@ -33,6 +33,18 @@ namespace SmartCityPlanner.Controllers
             return Ok(block.Buildings);
         }
 
+        [HttpGet("BuildingType")]
+        public ActionResult<BuildingType> GetBuildingType([Required, FromQuery] long buildingId)
+        {
+            var building = _context.Buildings.Find(buildingId);
+            if (building == null)
+            {
+                _logger.LogError("Invalid building ID");
+                return BadRequest();
+            }
+            return Ok(building.BuildingType);
+        }
+
         [HttpPut("Building")]
         public IActionResult PutBuilding([FromQuery] long buildingId, [FromBody] Rectangle vertices)
         {

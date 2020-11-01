@@ -43,7 +43,7 @@ namespace SmartCityPlanner.Data
                             Id = block.Id,
                             Vertices = new Rectangle
                             {
-                                X = 20,
+                                X = 50,
                                 Y = 20,
                                 Width = 300,
                             },
@@ -70,13 +70,14 @@ namespace SmartCityPlanner.Data
                             Id = 2000 + block.Id,
                             Vertices = new Rectangle
                             {
-                                X = 300,
-                                Y = 20,
+                                X = 400,
+                                Y = 100,
                                 Width = 100,
                                 Height = 200,
+                                Rotation = -45
                             },
                             Owner = "Anonimus",
-                            BuildingType = BuildingType.Residential,
+                            BuildingType = BuildingType.Entertainment,
                             ModelUrn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6c29xbmJqaGFvN2h2bWZsc2F2Y2dpcWxvdmxyOHhjazZfdHV0b3JpYWxfYnVja2V0L3JzdF9iYXNpY19zYW1wbGVfcHJvamVjdC5ydnQ="
                         }
                     },
@@ -87,8 +88,10 @@ namespace SmartCityPlanner.Data
                             Id = block.Id,
                             Vertices = new Rectangle
                             {
+                                X = 20,
                                 Y = 300,
-                                Width = 400
+                                Width = 400,
+                                Rotation = 5
                             }
                         }
                     },

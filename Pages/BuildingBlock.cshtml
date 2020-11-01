@@ -1,10 +1,12 @@
 @page "{id:int}"
+@model BuildingBlockModel
 @{
     ViewData["Title"] = "Zonă";
 }
 
 <div id="editor" style="border: 1px solid black; height: 70vh"></div>
 
+<script>const blockId = @Model.BuildingBlock.Id;</script>
 <script src="~/js/block-editor.js"></script>
 <div style="padding-top:5px">
     <button type="button" class="btn btn-secondary float-right" onclick="open3DModel()">Accesati modelul 3D</button>
