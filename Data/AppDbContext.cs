@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,9 @@ namespace SmartCityPlanner.Data
         public DbSet<BuildingBlock> BuildingBlocks { get; set; }
 
         public DbSet<Building> Buildings { get; set; }
+        public DbSet<GreenSpace> GreenSpaces { get; set; }
+        public DbSet<ParkingLot> ParkingLots { get; set; }
+
 
         public DbSet<TemperatureData> TemperatureData { get; set; }
         public DbSet<TemperatureData> RainfallData { get; set; }
@@ -30,13 +34,76 @@ namespace SmartCityPlanner.Data
                 Add(new BuildingBlock
                 {
                     Id = block.Id,
-                    Polygon = new Polygon(block.Vertices)
+                    Polygon = new Polygon(block.Vertices),
+                    Buildings = new List<Building>
+                    {
+                        new Building
+                        {
+                            Id = block.Id,
+                            Vertices = new Rectangle
+                            {
+                                X = 20,
+                                Y = 20,
+                                Width = 300,
+                            },
+                            Owner = "Mihai Condrat",
+                            BuildingType = BuildingType.Residential,
+                            ModelUrn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6c29xbmJqaGFvN2h2bWZsc2F2Y2dpcWxvdmxyOHhjazZfdHV0b3JpYWxfYnVja2V0L3JzdF9iYXNpY19zYW1wbGVfcHJvamVjdC5ydnQ="
+                        },
+                        new Building
+                        {
+                            Id = 1000 + block.Id,
+                            Vertices = new Rectangle
+                            {
+                                X = 20,
+                                Y = 400,
+                                Height = 150,
+                                Width = 200,
+                            },
+                            Owner = "Ionuț Costea",
+                            BuildingType = BuildingType.Economic,
+                            ModelUrn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6c29xbmJqaGFvN2h2bWZsc2F2Y2dpcWxvdmxyOHhjazZfdHV0b3JpYWxfYnVja2V0L3JzdF9iYXNpY19zYW1wbGVfcHJvamVjdC5ydnQ="
+                        },
+                        new Building
+                        {
+                            Id = 2000 + block.Id,
+                            Vertices = new Rectangle
+                            {
+                                X = 300,
+                                Y = 20,
+                                Width = 100,
+                                Height = 200,
+                            },
+                            Owner = "Anonimus",
+                            BuildingType = BuildingType.Residential,
+                            ModelUrn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6c29xbmJqaGFvN2h2bWZsc2F2Y2dpcWxvdmxyOHhjazZfdHV0b3JpYWxfYnVja2V0L3JzdF9iYXNpY19zYW1wbGVfcHJvamVjdC5ydnQ="
+                        }
+                    },
+                    GreenSpaces = new List<GreenSpace>
+                    {
+                        new GreenSpace
+                        {
+                            Id = block.Id,
+                            Vertices = new Rectangle
+                            {
+                                Y = 300,
+                                Width = 400
+                            }
+                        }
+                    },
+                    ParkingLots = new List<ParkingLot>()
                 });
             }
 
             LoadHeatMapData<TemperatureData>("SeedData/Temperatures.json");
 
             SaveChanges();
+        }
+
+        private class JsonBuildingBlock
+        {
+            public int Id { get; set; }
+            public double[][] Vertices { get; set; }
         }
 
         private void LoadHeatMapData<T>(string path) where T : HeatMapData
@@ -47,12 +114,6 @@ namespace SmartCityPlanner.Data
             {
                 Add(item);
             }
-        }
-
-        private class JsonBuildingBlock
-        {
-            public int Id { get; set; }
-            public double[][] Vertices { get; set; }
         }
     }
 }
