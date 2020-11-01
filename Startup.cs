@@ -19,6 +19,9 @@ namespace SmartCityPlanner
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            services.AddSwaggerGen();
+
             services.AddRazorPages();
             services.AddSingleton<ForgeService>();
             services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=app.db"));
@@ -43,6 +46,13 @@ namespace SmartCityPlanner
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Smart City API V1");
+            });
+
             app.UseRouting();
 
             app.UseAuthentication();
@@ -50,6 +60,7 @@ namespace SmartCityPlanner
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }
