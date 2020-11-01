@@ -63,7 +63,7 @@ namespace SmartCityPlanner.Data
                             },
                             Owner = "Ionuț Costea",
                             BuildingType = BuildingType.Economic,
-                            ModelUrn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6c29xbmJqaGFvN2h2bWZsc2F2Y2dpcWxvdmxyOHhjazZfdHV0b3JpYWxfYnVja2V0L3JzdF9iYXNpY19zYW1wbGVfcHJvamVjdC5ydnQ="
+                            ModelUrn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6c29xbmJqaGFvN2h2bWZsc2F2Y2dpcWxvdmxyOHhjazZfdHV0b3JpYWxfYnVja2V0L3JhY19hZHZhbmNlZF9zYW1wbGVfcHJvamVjdC5ydnQ="
                         },
                         new Building
                         {
@@ -78,7 +78,7 @@ namespace SmartCityPlanner.Data
                             },
                             Owner = "Anonimus",
                             BuildingType = BuildingType.Entertainment,
-                            ModelUrn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6c29xbmJqaGFvN2h2bWZsc2F2Y2dpcWxvdmxyOHhjazZfdHV0b3JpYWxfYnVja2V0L3JzdF9iYXNpY19zYW1wbGVfcHJvamVjdC5ydnQ="
+                            ModelUrn = "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6c29xbmJqaGFvN2h2bWZsc2F2Y2dpcWxvdmxyOHhjazZfdHV0b3JpYWxfYnVja2V0L3JhY19iYXNpY19zYW1wbGVfcHJvamVjdC5ydnQ="
                         }
                     },
                     GreenSpaces = new List<GreenSpace>
