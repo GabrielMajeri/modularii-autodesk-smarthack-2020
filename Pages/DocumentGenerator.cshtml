@@ -1,21 +1,2 @@
 @page
-@using SmartCityPlanner.Models
-
-<script>
-    const string AuthorName = "Gigel Militaru";
-    const float Area = 234.22;
-    const float Perimeter = 555.23;
-
-    function CreateTemplate() {
-    Document templateDoc = new Document("Model-Cerere.doc");
-    DocumentGenerator finalDoc = new DocumentGenerator(AuthorName, Area, Perimeter);
-    ReportingEngine engine = new ReportingEngine();
-
-    engine.BuildReport(templateDoc, finalDoc);
-    templateDoc.save("Word.doc");
-    }
-</script>
-
-<div>
-    <button onclick="CreateTemplate()">Create file</button>
-</div>
+@model DocumentGeneratorModel
