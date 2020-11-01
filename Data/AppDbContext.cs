@@ -34,6 +34,7 @@ namespace SmartCityPlanner.Data
                 Add(new BuildingBlock
                 {
                     Id = block.Id,
+                    Name = block.Name,
                     Polygon = new Polygon(block.Vertices),
                     Buildings = new List<Building>
                     {
@@ -103,6 +104,7 @@ namespace SmartCityPlanner.Data
         private class JsonBuildingBlock
         {
             public int Id { get; set; }
+            public string Name { get; set; }
             public double[][] Vertices { get; set; }
         }
 

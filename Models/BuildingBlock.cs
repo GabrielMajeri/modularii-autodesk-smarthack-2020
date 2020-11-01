@@ -9,6 +9,9 @@ namespace SmartCityPlanner.Models
         public int Id { get; set; }
 
         [Required]
+        public string Name { get; set; }
+
+        [Required]
         public Polygon Polygon { get; set; }
 
         public ICollection<Building> Buildings { get; set; }
