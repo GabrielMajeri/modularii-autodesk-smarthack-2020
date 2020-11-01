@@ -26,7 +26,7 @@ namespace SmartCityPlanner.Pages
             }
 
             var templateDoc = new Document("Model-Cerere.doc");
-            var finalDoc = new
+            var finalDoc = new DocumentDataSource
             {
                 AuthorName = building.Owner,
                 Area = building.ComputeArea(),
@@ -37,9 +37,19 @@ namespace SmartCityPlanner.Pages
             engine.BuildReport(templateDoc, finalDoc, "finalDoc");
 
             var stream = new MemoryStream();
-            templateDoc.Save(stream, SaveFormat.Pdf);
+            templateDoc.Save(stream, SaveFormat.Docx);
+            var bytes = stream.ToArray();
+            var mimeType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+            var fileName = "Cerere.docx";
 
-            return File(stream, "application/pdf");
+            return File(bytes, mimeType, fileName);
+        }
+
+        public class DocumentDataSource
+        {
+            public string AuthorName { get; set; }
+            public double Area { get; set; }
+            public double Perimeter { get; set; }
         }
     }
 }
