@@ -75,6 +75,8 @@ function updateBuildings() {
         r.scaleX(v.scaleX);
         r.scaleY(v.scaleY);
 
+        r.rotation(v.rotation);
+
         layer.draw();
       }
     });
@@ -98,7 +100,7 @@ stage.on("click tap", function (e) {
   // if click on empty area - remove all selections
   if (e.target === stage) {
     const previous = tr.nodes();
-    if (previous) {
+    if (previous.length > 0) {
       putBuilding(previous[0].id);
     }
     tr.nodes([]);
@@ -131,7 +133,7 @@ window.addEventListener("resize", resizeStage);
 
 function open3DModel() {
   const active = tr.nodes();
-  if (active) {
+  if (active.length > 0) {
     const buildingId = active[0].id;
     location.href = `/Building/${buildingId}`;
   }
@@ -139,7 +141,7 @@ function open3DModel() {
 
 function downloadDocument() {
   const active = tr.nodes();
-  if (active) {
+  if (active.length > 0) {
     const buildingId = active[0].id;
     location.href = `/DocumentGenerator?buildingId=${buildingId}`;
   }
