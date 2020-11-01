@@ -21,11 +21,16 @@
 	}).addTo(mymap);
 
     let polygon = null;
-    
+
+    function model3D(id){
+        window.location.href = `/BuildingBlock/${id}`;
+    }
+
     @foreach (var block in Model.BuildingBlocks)
     {
         <text>
-            L.polygon(@Html.Raw(block.Polygon.RawVertices)).addTo(mymap);
+            polygon = L.polygon(@Html.Raw(block.Polygon.RawVertices)).addTo(mymap);
+            polygon.on("click", () => model3D(@block.Id))
         </text>
     }
 
