@@ -128,3 +128,19 @@ function resizeStage() {
 }
 resizeStage();
 window.addEventListener("resize", resizeStage);
+
+function open3DModel() {
+  const active = tr.nodes();
+  if (active) {
+    const buildingId = active[0].id;
+    location.href = `/Building/${buildingId}`;
+  }
+}
+
+function downloadDocument() {
+  const active = tr.nodes();
+  if (active) {
+    const buildingId = active[0].id;
+    location.href = `/DocumentGenerator?buildingId=${buildingId}`;
+  }
+}
