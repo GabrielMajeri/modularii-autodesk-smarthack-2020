@@ -13,8 +13,8 @@ namespace SmartCityPlanner.Models
 
         public ICollection<Building> Buildings { get; set; }
 
-        public ICollection<Polygon> GreenSpaces { get; set; }
+        public ICollection<GreenSpace> GreenSpaces { get; set; }
 
-        public ICollection<Polygon> ParkingLots { get; set; }
+        public ICollection<ParkingLot> ParkingLots { get; set; }
     }
 }

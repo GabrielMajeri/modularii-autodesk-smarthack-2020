@@ -2,16 +2,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SmartCityPlanner.Models
 {
-    public class Building
+    public class Building : EditableEntity
     {
-        [Key]
-        public long Id { get; set; }
-
         [Required]
         public BuildingType BuildingType { get; set; }
-
-        [Required]
-        public Polygon Vertices { get; set; }
 
         public string ModelUrn { get; set; }
 
@@ -21,12 +15,6 @@ namespace SmartCityPlanner.Models
         public ushort SeismicRisk { get; set; }
 
         public uint PeopleCount { get; set; }
-
-        public double ComputeArea()
-        {
-            // TODO(Condrat): implement
-            return 0;
-        }
     }
 
     public enum BuildingType
